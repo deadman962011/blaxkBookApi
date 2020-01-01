@@ -32,8 +32,12 @@ Route::post('/Catigory',['uses'=>'Admincontroller@CatigoryPost',
                'as'=>'Admin.Catigory']); 
  
 
+Route::get('/Author',['uses'=>'AdminController@AuthorGet',
+                       'as'=>'Admin.Author']);
 
 
 
+Route::post('/Author',['uses'=>'AdminController@AuthorPost',
+                        'as'=>'Admin.Author']);
 
 });

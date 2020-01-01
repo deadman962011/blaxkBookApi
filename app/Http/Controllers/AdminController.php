@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\blaxkCatigory;
+use App\blaxkAuthor;
 
 
 
@@ -46,13 +47,48 @@ if($requset->input('DelSub')){
     $catigory->delete();
 
     return redirect()->back();
+}}
+
+
+
+public function AuthorGet()
+{
+    $Authors=blaxkAuthor::all();
+    return view('Admin.Author',['Authors'=>$Authors]);
+}
+
+
+public function AuthorPost(Request $requset)
+{
+
+    if($requset->input('AddSub')){
+    $default0=0;
+    $Authors= new blaxkAuthor([
+      'AuthorName'=>$requset->input('AuthorNameI'),
+      'AuthorPic'=>$requset->input('AuthorPicI'),
+      'AuthorBooksNum'=>$default0,
+      'AuthorDesc'=>$requset->input('AuthorDescI'),
+    ]);
+    $Authors->save();
+    return redirect()->back();
+
+
+    }
+
+
+    if($requset->input('DelSub')){
+     $Authors= blaxkAuthor::find($requset->input('DelSub'));
+     $Authors->delete();
+     return redirect()->back();
+
+    }
+
 }
 
 
 
 
 
-}
 
 
 

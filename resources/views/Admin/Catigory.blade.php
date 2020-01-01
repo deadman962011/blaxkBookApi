@@ -8,6 +8,8 @@
 <div class="row">
 
 <div class="col-sm-6 col-sm-offset-3">
+
+@if(!empty($Catigories))
  @foreach( $Catigories as $catigory)
  <div class="panel panel-default">
    <div class="panel-body">
@@ -21,6 +23,7 @@
    </div>
  </div>
  @endforeach
+@endif
 </div>
 
 </div>
