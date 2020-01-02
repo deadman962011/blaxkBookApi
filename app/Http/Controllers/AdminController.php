@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\blaxkCatigory;
 use App\blaxkAuthor;
 use App\blaxkBooks;
+use App\blaxkComment;
 
 
 
@@ -155,17 +156,57 @@ $Author->update(['AuthorBooksNum'=>$plus1A]);
 
 /**END */
 
-
-
-
-
-
+return redirect()->back();
 
 }
 
 
 
 
+
+public function BookDelGet()
+{
+    $book=blaxkBooks::all();
+
+    return view('Admin.BookDel',['Books'=>$book]);
+}
+
+
+
+
+
+public function BookDelParam($bookId)
+{
+
+ 
+  $book=blaxkBooks::find($bookId);
+ 
+
+
+
+ /**delete comments */
+  $comment=blaxkComment::where('bookId','=',$bookId)->orderBy('id');
+  $comment->delete();
+
+
+  /**-1 Catigory booksNum */
+  $catigory=blaxkCatigory::find($book->BookCatigory);
+  $catigory->update(['CatigoryBooksNum'=>$catigory->CatigoryBooksNum-1]);
+
+
+
+  /**-1 Author booksNum */
+  $author=blaxkAuthor::find($book->BookAuthor);
+  $author->update(['AuthorBooksNum'=>$author->AuthorBooksNum-1]);
+
+
+
+ /**delete book */  
+  $book->delete();
+
+
+ 
+}
 
 
 }

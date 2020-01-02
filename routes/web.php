@@ -50,4 +50,12 @@ Route::post('/Book/Add',['uses'=>'AdminController@BookAddPost',
                           'as'=>'Admin.AddBook']);
 
 
+Route::get('/Book/Del',['uses'=>'AdminController@BookDelGet',
+                          'as'=>'Admin.DelBook']);
+
+
+Route::get('/Book/Del/{bookId}',['uses'=>'AdminController@BookDelParam',
+                                 'as'=>'Admin.DelBook']);
+
+
 });
