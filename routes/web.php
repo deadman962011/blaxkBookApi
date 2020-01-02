@@ -58,4 +58,18 @@ Route::get('/Book/Del/{bookId}',['uses'=>'AdminController@BookDelParam',
                                  'as'=>'Admin.DelBook']);
 
 
+Route::get('/Book/Update',['uses'=>'AdminController@BookUpdateGet',
+                          'as'=>'Admin.UpdateBook']);
+
+
+Route::get('/Book/Update/{bookId}',['uses'=>'AdminController@BookUpdatePramGet',
+                                    'as'=>'Admin.UpdateBookParam']);
+
+Route::post('/Book/Update/{bookId}',['uses'=>'AdminController@BookUpdateParamPost',
+                                     'as'=>'Admin.UpdateBookParam']);
+
+
+
 });
+
+

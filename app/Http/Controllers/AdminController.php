@@ -193,20 +193,71 @@ public function BookDelParam($bookId)
   $catigory=blaxkCatigory::find($book->BookCatigory);
   $catigory->update(['CatigoryBooksNum'=>$catigory->CatigoryBooksNum-1]);
 
-
-
   /**-1 Author booksNum */
   $author=blaxkAuthor::find($book->BookAuthor);
   $author->update(['AuthorBooksNum'=>$author->AuthorBooksNum-1]);
 
-
-
  /**delete book */  
   $book->delete();
 
-
- 
 }
+
+
+
+public function BookUpdateGet()
+{
+    $books=blaxkBooks::all();
+    return view('Admin.BookUpdate',['Books'=>$books]);
+}
+
+
+public function BookUpdatePramGet($BookId)
+{
+    $book=blaxkBooks::find($BookId);
+    $catigory=blaxkCatigory::all();
+    $Author=blaxkAuthor::all();
+    return view('Admin.BookUpdateForm',['book'=>$book,'Catigories'=>$catigory,'Authors'=>$Author]);
+
+
+}
+
+
+
+public function BookUpdateParamPost(Request $request,$bookId)
+{
+
+    $book=blaxkBooks::find($bookId);
+    $book->update([
+
+    'BookName'=>$request->input('BookNameI'),
+    'BookAuthor'=>$request->input('BookAuthorI'),
+    'BookCatigory'=>$request->input('BookCatigoryI'),
+    'BookPic'=>$request->input('BookPicI'),
+    'BookDownN'=>$book->BookDownN,
+    'BookLink'=>$request->input('BookLinkI'),
+    'BookDesc'=>$request->input('BookDescI'),
+    'BookReview'=>$request->input('BookReviewI'),
+    'BookLang'=>$request->input('BookLangI'),
+    'BookPagesNum'=>$request->input('BookPagesNumI'),
+    'BookSize'=>$request->input('BookSizeI'),
+    'BookRelaseDate'=>$request->input('BookRelaseDateI')
+    ]);
+
+    return redirect()->back();
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
