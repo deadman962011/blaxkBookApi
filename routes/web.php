@@ -22,8 +22,40 @@ Route::group(['prefix'=>'Admin'],function(){
 
 
 
+    Route::group(['middleware'=>'guest'],function(){
+    
+    
+        Route::get('/SignIn',['uses'=>'AdminController@loginAdminGet',
+        'as'=>'Admin.LogIn']);
+    
+        Route::post('/SignIn',['uses'=>'AdminController@LoginAdminPost',
+         'as'=>'Admin.LogIn']);
+
+
+    });
+
+
+
+
+
+
+
+
+    Route::group(['middleware'=>'auth'],function()
+    {
+  
+
+
+
+
+
 Route::get('/',['uses'=>'Admincontroller@mainAdmin',
                'as'=>'Admin.MainAdmin']);
+
+
+Route::get('/LogOut',['uses'=>'Admincontroller@logOutGet',
+               'as'=>'Admin.LogOut']);
+           
 
  Route::get('/Catigory',['uses'=>'Admincontroller@CatigoryGet',
                'as'=>'Admin.Catigory']);
@@ -69,6 +101,8 @@ Route::post('/Book/Update/{bookId}',['uses'=>'AdminController@BookUpdateParamPos
                                      'as'=>'Admin.UpdateBookParam']);
 
 
+
+});
 
 });
 

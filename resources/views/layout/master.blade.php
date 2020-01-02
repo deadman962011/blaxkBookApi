@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
    <link rel="stylesheet" href="http://127.0.0.1/cdn/bootstrap/css/bootstrap.min.css">
+   <link rel="stylesheet" href="http://127.0.0.1/cdn/BlaxkBooks/style.css">
 
     @yield('style')
 </head>
-<body>
+<body >
 
 @include('inc.header')
 

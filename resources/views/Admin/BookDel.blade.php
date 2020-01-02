@@ -14,6 +14,9 @@
 <br><br>
 
 <div class="row">
+<div class="col-sm-12 box">
+
+
 
 @if(!empty($Books))
 
@@ -36,7 +39,35 @@
 @endforeach
 @endif
 
+
 </div>
+</div>
+
+
+@endsection
+
+
+
+@section('script')
+
+
+<script >
+
+$("document").ready(function(){
+
+$('#SearchDel').on('keyup',function(){
+    var value=
+    $(this).val();
+
+    $(".box *").filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+})
+
+})
+
+
+</script>
 
 
 @endsection

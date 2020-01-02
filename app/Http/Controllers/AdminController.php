@@ -7,6 +7,7 @@ use App\blaxkCatigory;
 use App\blaxkAuthor;
 use App\blaxkBooks;
 use App\blaxkComment;
+use Auth;
 
 
 
@@ -15,8 +16,44 @@ class AdminController extends Controller
    
 public function mainAdmin()
 {
-    return view('Admin.MainAdmin');
+
+
+    $books=blaxkBooks::all();
+    $catigory=blaxkCatigory::all();
+    $Authors=blaxkAuthor::all();
+    return view('Admin.MainAdmin',['books'=>$books,'catigories'=>$catigory,'Authors'=>$Authors]);
 }
+
+
+public function loginAdminGet()
+{
+    
+    return view('Admin.LogIn');
+}
+
+public function loginAdminPOST(Request $request)
+{
+    if(Auth::attempt(['name'=>$request->input('BlaxkUserI'),'password'=>$request->input('BlaxkPassI')])){
+        return redirect()->route('Admin.MainAdmin');
+    }
+    else
+    {
+    return redirect()->route('Admin.SignIn');
+    };
+}
+
+
+public function logOutGet()
+{
+    Auth::logout();
+    return redirect()->route('Admin.LogOut');
+}
+
+
+
+
+
+
 
 
 public function CatigoryGet()
@@ -86,25 +123,6 @@ public function AuthorPost(Request $requset)
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 public function BookAddGet()
@@ -199,6 +217,8 @@ public function BookDelParam($bookId)
 
  /**delete book */  
   $book->delete();
+
+  return redirect()->back();
 
 }
 

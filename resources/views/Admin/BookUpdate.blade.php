@@ -3,13 +3,26 @@
 
 @section('content')
 
-<div class="row">
 
+<div class="row">
+ <div class="col-sm-12">
+  <input type="text" name="SearchDel" placeholder='Search ' id="SearchDel" class="form-control">
+ </div>
+</div>
+
+<br><br>
+<br><br>
+
+
+
+<div class="row ">
+  
+<div class="col-sm-12 box">
 
 @if(!empty($Books))
 @foreach( $Books as $book)
 
-<a href="Update/{{$book->id}}">
+<a href="{{$book->id}}">
 <div class="col-sm-4">
  <div class="panel panel-primary">
   <div class="panel-body">
@@ -26,8 +39,41 @@
 @endforeach
 @endif
 
-
 </div>
+</div>
+
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+@section('script')
+
+
+<script >
+
+$("document").ready(function(){
+
+$('#SearchDel').on('keyup',function(){
+    var value=
+    $(this).val();
+
+    $(".box *").filter(function(){
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    })
+})
+
+})
+
+
+</script>
 
 
 @endsection
