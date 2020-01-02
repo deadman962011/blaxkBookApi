@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\blaxkCatigory;
 use App\blaxkAuthor;
+use App\blaxkBooks;
 
 
 
@@ -88,6 +89,79 @@ public function AuthorPost(Request $requset)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function BookAddGet()
+{
+
+    $catigory=blaxkCatigory::all();
+    $Author=blaxkAuthor::all();
+    return view('Admin.BookAdd',['catigories'=>$catigory,'Authors'=>$Author]);
+}
+
+public function BookAddPost(Request $request)
+{
+   
+
+$default0=0;
+
+$book=new blaxkBooks([
+    'BookName'=>$request->input('BookNameI'),
+    'BookAuthor'=>$request->input('BookAuthorI'),
+    'BookCatigory'=>$request->input('BookCatigoryI'),
+    'BookPic'=>$request->input('BookPicI'),
+    'BookDownN'=>$default0,
+    'BookLink'=>$request->input('BookLinkI'),
+    'BookDesc'=>$request->input('BookDescI'),
+    'BookReview'=>$request->input('BookReviewI'),
+    'BookLang'=>$request->input('BookLangI'),
+    'BookPagesNum'=>$request->input('BookPagesNumI'),
+    'BookSize'=>$request->input('BookSizeI'),
+    'BookRelaseDate'=>$request->input('BookRelaseDateI'),
+]);
+
+$book->save();
+
+
+
+/** +1 FOR Catigory BOOKSnUM */
+$catigory=blaxkCatigory::find($request->input('BookCatigoryI'));
+$plus1=$catigory->CatigoryBooksNum+1;
+$catigory->update(['CatigoryBooksNum'=>$plus1]);
+
+/**END */
+
+
+
+/** +1 FOR AUTHOR BOOKSNUM */
+$Author=blaxkAuthor::find($request->input('BookAuthorI'));
+$plus1A=$Author->AuthorBooksNum+1;
+$Author->update(['AuthorBooksNum'=>$plus1A]);
+
+/**END */
+
+
+
+
+
+
+
+}
 
 
 

@@ -24,11 +24,14 @@
 
 
 
- @yield('script')
+
 
 
 
  <script src="http://127.0.0.1/cdn/jquery/jquery.min.js"></script>
  <script src="http://127.0.0.1/cdn/bootstrap/js/bootstrap.min.js"></script>
+ <script src="http://127.0.0.1/cdn/select2/js/select2.min.js"></script>
+
+ @yield('script')
 </body>
 </html>

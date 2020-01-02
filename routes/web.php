@@ -40,4 +40,14 @@ Route::get('/Author',['uses'=>'AdminController@AuthorGet',
 Route::post('/Author',['uses'=>'AdminController@AuthorPost',
                         'as'=>'Admin.Author']);
 
+Route::get('/Book',['uses'=>'AdminController@BookGet',
+                    'as'=>'Admin.Book']);
+
+Route::get('/Book/Add',['uses'=>'AdminController@BookAddGet',
+                       'as'=>'Admin.AddBook']);
+
+Route::post('/Book/Add',['uses'=>'AdminController@BookAddPost',
+                          'as'=>'Admin.AddBook']);
+
+
 });
