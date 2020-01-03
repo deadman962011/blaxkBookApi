@@ -10,7 +10,7 @@
  <div class="row">
   <div class="box col-sm-12">
 
-<a href="Book/Add/">
+<a href="/Admin/Book/Add/">
     <div class="col-sm-3">
       <div class="panel panel-primary">
        <div class="panel-body">
@@ -28,7 +28,7 @@
 
 
 
-<a href="Book/Del/">
+<a href="/Book/Del/">
     <div class="col-sm-3">
       <div class="panel panel-danger">
        <div class="panel-body">

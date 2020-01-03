@@ -16,3 +16,16 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::get('/BlaxkMain',['uses'=>'ApiController@MainApi']);
+
+Route::get('/BlaxkBooks',['uses'=>'ApiController@fetchBooks']);
+
+Route::get('/BlaxkOne/{BookId}',['uses'=>'ApiController@fetchOne']);
+
+Route::get('/BlaxkCatigories',['uses'=>'ApiController@fetchCatigories']);
+
+Route::get('/BlaxkAuthors',['uses'=>'ApiController@fetchAuthors']);
+
+Route::get('/BlaxkAuthorOne/AuthorId',['uses'=>'ApiController@fetchAuthorOne']);

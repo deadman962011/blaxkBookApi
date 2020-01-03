@@ -8,4 +8,5 @@ class blaxkBooks extends Model
 {
    
     protected $fillable=['BookName','BookAuthor','BookCatigory','BookPic','BookDownN','BookLink','BookDesc','BookReview','BookLang','BookPagesNum','BookSize','BookRelaseDate'];
+ 
 }
