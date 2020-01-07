@@ -4,36 +4,8 @@
 @section('content')
 
 
-<!-- dispaly catigories -->
+<!-- Add catigory form -->
 <div class="row">
-
-<div class="col-sm-9 col-sm-offset-2">
-
-@if(!empty($Authors))
- @foreach( $Authors as $Author)
- <div class="panel panel-default">
-   <div class="panel-body">
-    <div class="col-sm-10"><h4>{{$Author->AuthorName}}  ({{$Author->AuthorBooksNum}})</h4></div>
-    <form method='post'>
-    <div class="col-sm-2"><button name='DelSub' value='{{$Author->id}}' class="btn btn-danger pull-right">X</button></div>
-     {{ csrf_field() }}
-    </form>
-    
-    
-   </div>
- </div>
- @endforeach
-@endif
-</div>
-
-</div>
-
-
-
-
-
- <!-- Add catigory form -->
- <div class="row">
  <div class="col-sm-9 col-sm-offset-2">
   <form method='POST' class="form-horizontal">
    <div class="form-group">
@@ -46,6 +18,44 @@
   </form>
  </div>
 </div>
+
+
+
+
+
+
+
+
+
+<!-- dispaly catigories -->
+<div class="row">
+
+
+
+@if(!empty($Authors))
+ @foreach( $Authors as $Author)
+ <div class="col-sm-6">
+ <div class="panel panel-default">
+   <div class="panel-body">
+    <div class="col-sm-10"><h4>{{$Author->AuthorName}}  ({{$Author->AuthorBooksNum}})</h4></div>
+    <form method='post'>
+    <div class="col-sm-2"><button name='DelSub' value='{{$Author->id}}' class="btn btn-danger pull-right">X</button></div>
+     {{ csrf_field() }}
+    </form>
+    </div>
+   </div>
+ </div>
+ @endforeach
+@endif
+
+
+</div>
+
+
+
+
+
+ 
 
 
 @endsection

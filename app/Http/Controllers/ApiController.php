@@ -15,7 +15,19 @@ class ApiController extends Controller
 
 public function MainApi()
 {
-    # code...
+    /**Books */
+    $books=blaxkBooks::all();
+    $books2=$books->load('Author');
+
+    /**Catigories */
+    $Catigory=blaxkCatigory::all();
+
+
+    /**Authors */
+    $Authors=blaxkAuthor::all();
+
+
+    return response(['Books'=>$books2,'Catigories'=>$Catigory,'Authors'=>$Authors],200);
 }
 
 
@@ -25,16 +37,49 @@ public function MainApi()
 public function fetchBooks()
 {
     $books=blaxkBooks::all();
-    return response()->json($books->toArray(),200);
+    $books2=$books->load('Author');
+
+    return response(['Books'=>$books2],200);
+
 }   
+
+
+
 
 public function fetchOne($BookId)
 {
-    $book=blaxkBooks::find($BookId);
-    $comment=blaxkComment::where('BookId','=',$book->id)->get();
     
-    return response()->json(['BlaxkBook'=>$book->toArray(),'comments'=>$comment->toArray()],200);
+    $book=blaxkBooks::find($BookId);
+    $Author=blaxkAuthor::find($book->BookAuthor);
+    $Catigory=blaxkCatigory::find($book->BookCatigory);
+    $catigoryAll = blaxkCatigory::all()->take('10');
+    $AuthorAll=blaxkAuthor::all()->take('9');
+    $SameCatigory=blaxkBooks::where('BookCatigory','=',$book->BookCatigory)->get()->take('4');
+    $SameAuthor=blaxkBooks::where('BookAuthor','=',$book->BookAuthor)->get()->take('4');
+    
+    $commentAll=blaxkComment::all()->count();
+    if($commentAll > 0){
+
+        $comment=blaxkComment::where('BookId','=',$book->id);
+        return response(['Book'=>$book,'Author'=>$Author,'Catigory'=>$Catigory,'Comment'=>$comment],200);
+    }
+    
+    return response(['Book'=>$book,'Author'=>$Author,'Catigory'=>$Catigory,'AuthorAll'=>$AuthorAll,'CatigoryAll'=>$catigoryAll,'SameAuthor'=>$SameAuthor,'SameCatigory'=>$SameCatigory],200);
+    
+    
 }
+
+public function fetchOnePost(Request $request){
+
+ 
+
+
+    
+}
+
+
+
+
 
 
 public function fetchAuthors()

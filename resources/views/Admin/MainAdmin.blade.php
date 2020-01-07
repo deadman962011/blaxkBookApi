@@ -28,7 +28,7 @@
 
 
 
-<a href="/Book/Del/">
+<a href="Admin/Book/Del/">
     <div class="col-sm-3">
       <div class="panel panel-danger">
        <div class="panel-body">
@@ -80,6 +80,8 @@
  </div>
 </div>
 </a>
+
+<h4>{{ $book->Author->AuthorName}}</h4>
 @endforeach
   </div>
  </div>
@@ -136,7 +138,7 @@
 
  <div class="row">
     <div class="box col-sm-12">
-     <a href="Author/">
+     <a href="/Admin/Author/">
        <div class="col-sm-3">
         <div class="panel panel-primary">
          <div class="panel-body">
@@ -155,7 +157,7 @@
 
 @foreach($Authors as $author)
 
-<a href="Author/">
+<a href="Admin/Author/">
        <div class="col-sm-3">
         <div class="panel panel-default">
          <div class="panel-body">

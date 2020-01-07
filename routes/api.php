@@ -24,6 +24,8 @@ Route::get('/BlaxkBooks',['uses'=>'ApiController@fetchBooks']);
 
 Route::get('/BlaxkOne/{BookId}',['uses'=>'ApiController@fetchOne']);
 
+Route::post('/BlaxkOne{BookId}',['uses'=>'ApiController@fetchOnePost']);
+
 Route::get('/BlaxkCatigories',['uses'=>'ApiController@fetchCatigories']);
 
 Route::get('/BlaxkAuthors',['uses'=>'ApiController@fetchAuthors']);

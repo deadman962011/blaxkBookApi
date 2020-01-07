@@ -22,7 +22,7 @@
 
 @foreach( $Books as $book)
 
-<a href="Del/{{$book->id}}">
+<a href="{{$book->id}}">
 <div class="col-sm-4">
  <div class="panel panel-danger">
   <div class="panel-body">
