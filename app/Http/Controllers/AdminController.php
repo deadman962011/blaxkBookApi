@@ -18,9 +18,9 @@ public function mainAdmin()
 {
 
 
-    $books=blaxkBooks::all();
-    $catigory=blaxkCatigory::all();
-    $Authors=blaxkAuthor::all();
+    $books=blaxkBooks::all()->take('12');
+    $catigory=blaxkCatigory::all()->take('11');
+    $Authors=blaxkAuthor::all()->take('11');
     return view('Admin.MainAdmin',['books'=>$books,'catigories'=>$catigory,'Authors'=>$Authors]);
 }
 

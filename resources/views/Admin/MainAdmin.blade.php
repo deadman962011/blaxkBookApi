@@ -14,12 +14,10 @@
     <div class="col-sm-3">
       <div class="panel panel-primary">
        <div class="panel-body">
-        <div class="media">
-        <div class="media-body">
-        <div class="media-heading"><img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt=""></div>
-        <div class="media-bottom"><h4>Add new book</h4></div>
-     </div>
-    </div>
+        <div class="blaxkBook">
+        <img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt="">
+        <h4>Add new book</h4>
+       </div>
   </div>
  </div>
 </div>
@@ -32,12 +30,10 @@
     <div class="col-sm-3">
       <div class="panel panel-danger">
        <div class="panel-body">
-        <div class="media">
-        <div class="media-body">
-        <div class="media-heading"><img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt=""></div>
-        <div class="media-bottom"><h4>Delete book</h4></div>
-     </div>
-    </div>
+        <div class="blaxkBook">
+        <img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt="">
+        <h4>Delete book</h4>
+        </div>
   </div>
  </div>
 </div>
@@ -45,16 +41,14 @@
 
 
 
-<a href="Book/Update/">
+<a href="Admin/Book/Update/">
     <div class="col-sm-3">
       <div class="panel panel-warning">
        <div class="panel-body">
-        <div class="media">
-        <div class="media-body">
-        <div class="media-heading"><img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt=""></div>
-        <div class="media-bottom"><h4>edit book</h4></div>
-     </div>
-    </div>
+         <div class="blaxkBook">
+        <img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt="">
+        <h4>edit book</h4>
+        </div>
   </div>
  </div>
 </div>
@@ -66,22 +60,21 @@
 
 
 @foreach( $books as $book)
-<a href="Book/Add/">
+<a href="http://127.0.0.1:4000/{{$book->id}}">
     <div class="col-sm-3">
       <div class="panel panel-default">
        <div class="panel-body">
-        <div class="media">
-        <div class="media-body">
-        <div class="media-heading"><img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt=""></div>
-        <div class="media-bottom"><h4>{{$book->BookName}}</h4></div>
-     </div>
-    </div>
+        <div class='blaxkBook'>
+         <img class='img-responsive' src="{{$book->BookPic}}" alt="">
+         <h4>{{$book->BookName}}</h4>
+         <h5>{{ $book->Author->AuthorName}}</h5>
+      </div>
   </div>
  </div>
 </div>
 </a>
 
-<h4>{{ $book->Author->AuthorName}}</h4>
+
 @endforeach
   </div>
  </div>
@@ -95,13 +88,10 @@
        <div class="col-sm-3">
         <div class="panel panel-primary">
          <div class="panel-body">
-          <div class="media">
-           <div class="media-body">
-           <div class="media-heading"><img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt=""></div>
-           <div class="media-bottom"><h4>manage Catigory</h4></div>
-     </div>
-    </div>
-  </div>
+     
+             <img class='img-responsive' src="http://127.0.0.1/cdn/images/2.jpg" alt="" >
+             <h4>manage Catigory</h4>
+          </div>
  </div>
 </div>
 </a>
